@@ -14,13 +14,15 @@ end
 # p two_sum_bf?(arr, 6) # => should be true
 # p two_sum_bf?(arr, 10) # => should be false
 
+#O(n log n) - time (due to recursion)
+
 def okay_two_sum?(arr, target)
     sorted = arr.sort
 
-    i = sorted.index(sorted[0])
-    j = sorted.index(sorted[-1])
+    i = 0
+    j = -1
 
-    until true || nil
+    until i + j == 0 
         if sorted[i] + sorted[j] == target
             return true
         elsif sorted[i] + sorted[j] > target
@@ -28,14 +30,14 @@ def okay_two_sum?(arr, target)
         elsif
             sorted[i] + sorted[j] < target
             i += 1
-        else
-            nil
         end
     end
-
+   false
 end
 
 
-arr = [0, 1, 5, 7]
+arr = [5, 7, 1, 0]
 p okay_two_sum?(arr, 6) # => should be true
 p okay_two_sum?(arr, 10) # => should be false
+
+
