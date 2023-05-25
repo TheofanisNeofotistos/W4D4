@@ -13,15 +13,28 @@ end
 # p first_anagram?("gizmo", "sally")    #=> false
 # p first_anagram?("elvis", "lives")    #=> true
 
+#O(n) - time 
+#O(n) - space
 
 def second_anagram?(str1, str2)
-    str1.split
+    chars = str2.split("") 
 
+    str1.each_char do |char|
+        idx = chars.find_index(char)
+
+        if 
+            idx != nil 
+            chars.delete(char)
+        end
+
+    end
+
+    chars.empty?
 end
 
 
-# p first_anagram?("gizmo", "sally")    #=> false
-# p first_anagram?("elvis", "lives")    #=> true
+p second_anagram?("gizmo", "sally")    #=> false
+p second_anagram?("elvis", "lives")    #=> true
 
 
 #O(n log n) - time
