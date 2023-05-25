@@ -33,25 +33,46 @@ end
 # p my_min(array)  # =>  -5
 
 # O(n^2) - time
+# def largest_contiguous_subsum(list)
+#     sub_arrs = []
+#     i = 0
+
+#     while i < list.length
+#         sub_arrs << [list[i]]
+#         j = i + 1
+#         while j < list.length
+#             sub_arrs << list[i..j]
+#             j += 1
+#         end
+#         i += 1
+#     end
+
+#     sum = 0
+#     sub_arrs.each do |arr|
+#       sum = arr.sum if arr.sum > sum
+#     end
+#     sum
+# end
+
+
+#O(n) - time
+#O(1) - 
 def largest_contiguous_subsum(list)
-    sub_arrs = []
-    i = 0
+    current_sum = 0
+    largest_sum = 0
 
-    while i < list.length
-        sub_arrs << [list[i]]
-        j = i + 1
-        while j < list.length
-            sub_arrs << list[i..j]
-            j += 1
+    list.each do |num|
+        current_sum += num 
+        if current_sum > largest_sum
+            largest_sum = current_sum
         end
-        i += 1
-    end
 
-    sum = 0
-    sub_arrs.each do |arr|
-      sum = arr.sum if arr.sum > sum
+        if current_sum < 0
+            current_sum = 0
+        end
     end
-    sum
+    largest_sum
+
 end
 
 list = [5, 3, -7]
